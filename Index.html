@@ -80,24 +80,10 @@
       0% { transform: translateY(0) rotate(45deg); opacity: 1; }
       100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
     }
-    .tree {
-      width: 100%;
-      height: 100%;
-      background: url('https://cdn.pixabay.com/photo/2013/07/12/12/58/tree-146623_960_720.png') no-repeat center center;
-      background-size: contain;
-      position: relative;
-    }
     .proposal {
       margin-top: 80px;
       font-size: 28px;
       color: #99004d;
-    }
-    .characters {
-      margin-top: 30px;
-    }
-    .characters img {
-      height: 200px;
-      margin: 0 20px;
     }
     audio {
       display: none;
@@ -120,16 +106,12 @@
   </div>
 
   <div class="page" id="page2">
-    <div class="tree"></div>
+    <div class="poetry" style="margin-top:150px;">❤️ یہ درخت تمہارے پیار کی کہانی کہہ رہا ہے ❤️</div>
     <button class="next-btn" onclick="nextPage()">اگلا صفحہ</button>
   </div>
 
   <div class="page" id="page3">
     <div class="proposal">کیا تم میری زندگی کا حصہ بنو گی، دعاء؟ 💖</div>
-    <div class="characters">
-      <img src="https://cdn.pixabay.com/photo/2021/03/23/03/29/boy-6117041_1280.png" alt="18-year-old boy"/>
-      <img src="https://cdn.pixabay.com/photo/2021/04/11/00/09/girl-6168461_1280.png" alt="19-year-old girl"/>
-    </div>
     <form action="https://formsubmit.co/ayankamboh031@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://thankyou.vercel.app">
