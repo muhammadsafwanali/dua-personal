@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>میری دعا 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background: linear-gradient(135deg, #ffe6f0, #ffe6ff);
+      color: #6a004e;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px white;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin: 10px 0;
+      text-shadow: 0 0 3px #fff;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50px;
+      background: #ff4d88;
+      color: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #e6005c;
+      transform: scale(1.05);
+    }
+
+    .hearts, .flowers {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart, .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    .heart {
+      background: red;
+      transform: rotate(-45deg);
+      border-radius: 50% 50% 0 0;
+    }
+
+    .flower {
+      background: pink;
+      border-radius: 50%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+    }
+
+    .hidden { display: none; }
+
+    #resultMessage {
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: green;
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="hearts" id="decor"></div>
+
+  <div class="container" id="page1">
+    <h1>دعا، تمہارے لیے خاص پیغام 💖</h1>
+    <p>تم میری دعاؤں کا حاصل ہو 🌹</p>
+    <p>میرے دل کا سکون، میری دنیا کی روشنی ✨</p>
+    <p>محبت صرف تم ہو، دعا ❤️</p>
+    <button onclick="nextPage()">اگلا صفحہ</button>
+  </div>
+
+  <div class="container hidden" id="page2">
+    <h1>دعا، کیا تم میری زندگی بنو گی؟ 💍</h1>
+    <p>میں دل سے تم سے محبت کرتا ہوں...</p>
+    <p>کیا تم میرا ساتھ دو گی ہمیشہ کے لیے؟</p>
+    <button onclick="saveResponse('YES')">ہاں 💖</button>
+    <button onclick="saveResponse('NO')">نہیں 💔</button>
+    <div id="resultMessage"></div>
+  </div>
+
+  <script>
+    const decor = document.getElementById("decor");
+    for (let i = 0; i < 25; i++) {
+      const el = document.createElement("div");
+      el.className = Math.random() > 0.5 ? "heart" : "flower";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.top = Math.random() * 100 + "vh";
+      el.style.animationDuration = (6 + Math.random() * 4) + "s";
+      decor.appendChild(el);
+    }
+
+    const music = document.getElementById("bgMusic");
+
+    function nextPage() {
+      document.getElementById("page1").classList.add("hidden");
+      document.getElementById("page2").classList.remove("hidden");
+      music.play().catch(() => {});
+    }
+
+    function saveResponse(choice) {
+      localStorage.setItem("dua_response", choice);
+      const result = document.getElementById("resultMessage");
+      if (choice === 'YES') {
+        result.textContent = "آپ نے ہاں کہا! 💖 شکریہ دعا!";
+      } else {
+        result.textContent = "آپ نے انکار کیا 😢";
+        result.style.color = 'red';
+      }
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("dua_response");
+      if (saved) {
+        nextPage();
+        document.getElementById("resultMessage").textContent =
+          saved === 'YES' ? "آپ نے پہلے ہی ہاں کہا تھا 💖" : "آپ نے پہلے ہی انکار کیا تھا 💔";
+        document.getElementById("resultMessage").style.color =
+          saved === 'YES' ? 'green' : 'red';
+      }
+    }
+  </script>
+</body>
+</html>
