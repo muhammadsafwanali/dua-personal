@@ -1,161 +1,23 @@
-
-<!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>دعاء کے لیے خاص پیغام</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Nastaliq Urdu', serif;
-      background: linear-gradient(to bottom right, #ffe6f0, #fff5f9);
-      overflow: hidden;
-    }
-    .page {
-      display: none;
-      height: 100vh;
-      width: 100vw;
-      padding: 20px;
-      text-align: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .active {
-      display: block;
-    }
-    .poetry {
-      font-size: 26px;
-      color: #b30059;
-      margin-top: 100px;
-      line-height: 2.5em;
-      animation: fadeIn 2s ease-in-out forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .next-btn, .response-btn {
-      background: #ff5ca2;
-      border: none;
-      padding: 12px 30px;
-      font-size: 18px;
-      color: white;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 40px;
-      transition: 0.3s ease;
-    }
-    .next-btn:hover, .response-btn:hover {
-      background: #e60073;
-    }
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 6s linear infinite;
-    }
-    .heart:before, .heart:after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-    }
-    .heart:before {
-      top: -10px;
-      left: 0;
-    }
-    .heart:after {
-      left: -10px;
-      top: 0;
-    }
-    @keyframes float {
-      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
-    }
-    .tree {
-      width: 100%;
-      height: 100%;
-      background: url('https://i.imgur.com/fxT6cgG.png') no-repeat center center;
-      background-size: contain;
-      position: relative;
-    }
-    .proposal {
-      margin-top: 80px;
-      font-size: 28px;
-      color: #99004d;
-    }
-    .characters {
-      margin-top: 30px;
-    }
-    .characters img {
-      height: 200px;
-      margin: 0 20px;
-    }
-    audio {
-      display: none;
-    }
-  </style>
+  <title>love you</title>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2023/03/23/audio_1ae68f24e9.mp3" type="audio/mpeg">
-  </audio>
+  
 
-  <div class="page active" id="page1">
-    <div class="poetry">
-      تمہاری ہر بات دل کو بہا لے جاتی ہے ❤️<br>
-      تم ہو تو زندگی خوبصورت لگتی ہے 🌸<br>
-      تمہارے بغیر ہر لمحہ ادھورا سا ہے 💔
-    </div>
-    <button class="next-btn" onclick="nextPage()">اگلا صفحہ</button>
-    <div id="heartContainer"></div>
+<div class="bg_heart">
+</div>
+
+<div class="container">
+ 
+
+<h2 id="text1"></h2>
+
+
   </div>
+  
 
-  <div class="page" id="page2">
-    <div class="tree"></div>
-    <button class="next-btn" onclick="nextPage()">اگلا صفحہ</button>
-  </div>
 
-  <div class="page" id="page3">
-    <div class="proposal">کیا تم میری زندگی کا حصہ بنو گی، دعاء؟ 💖</div>
-    <div class="characters">
-      <img src="https://i.imgur.com/zRWKPiT.png" alt="18-year-old boy"/>
-      <img src="https://i.imgur.com/lOeU6FA.png" alt="19-year-old girl"/>
-    </div>
-    <form action="https://formsubmit.co/ayankamboh031@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://thankyou.vercel.app">
-      <button class="response-btn" type="submit" name="answer" value="Yes">ہاں</button>
-      <button class="response-btn" type="submit" name="answer" value="No">نہیں</button>
-    </form>
-  </div>
 
-  <script>
-    let currentPage = 1;
-    function nextPage() {
-      document.getElementById('page' + currentPage).classList.remove('active');
-      currentPage++;
-      document.getElementById('page' + currentPage).classList.add('active');
-    }
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.top = "100vh";
-      document.getElementById("heartContainer").appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-
-    setInterval(createHeart, 500);
-  </script>
 </body>
 </html>
